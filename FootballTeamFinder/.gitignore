@@ -13,3 +13,14 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# ---- IntelliJ IDEA
+*.iws
+*.ipr
+.idea/
+.attach_pid*
+out/
+
+# ---- SonarQube
+.sonar/
+.scannerwork/
