@@ -1,4 +1,4 @@
-package rs.ac.uns.pmf.footballteamfinder.ui;
+package rs.ac.uns.pmf.footballteamfinder.presentation;
 
 import android.app.Application;
 

@@ -1,9 +1,9 @@
-package rs.ac.uns.pmf.footballteamfinder.ui.main;
+package rs.ac.uns.pmf.footballteamfinder.presentation.main;
 
 import android.os.Bundle;
 
 import rs.ac.uns.pmf.footballteamfinder.R;
-import rs.ac.uns.pmf.footballteamfinder.ui.BaseActivity;
+import rs.ac.uns.pmf.footballteamfinder.presentation.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 

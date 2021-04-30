@@ -1,18 +1,19 @@
-package rs.ac.uns.pmf.footballteamfinder.ui.main;
-
-import androidx.lifecycle.ViewModelProvider;
+package rs.ac.uns.pmf.footballteamfinder.presentation.main;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import rs.ac.uns.pmf.footballteamfinder.R;
+import rs.ac.uns.pmf.footballteamfinder.model.remote.league.LeagueApi;
 
 public class MainFragment extends Fragment {
 
@@ -33,7 +34,15 @@ public class MainFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        // TODO: Use the ViewModel
+
+        mViewModel.loadEnglishLeagueDataRemotely(2019);
+        mViewModel.englishLeagueData().observe(this, new Observer<LeagueApi>() {
+            @Override
+            public void onChanged(LeagueApi leagueApi) {
+                Toast.makeText(getContext(), "Data: " + leagueApi.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
 }
