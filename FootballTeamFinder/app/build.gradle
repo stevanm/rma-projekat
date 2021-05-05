@@ -55,4 +55,8 @@ dependencies {
     //image caching lib
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    //google ads
+    implementation 'com.google.android.gms:play-services-ads:20.1.0'
+
+
 }
