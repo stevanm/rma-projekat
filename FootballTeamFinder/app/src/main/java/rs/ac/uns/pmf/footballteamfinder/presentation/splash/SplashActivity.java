@@ -20,6 +20,7 @@ public class SplashActivity extends BaseActivity {
         Handler handler = new Handler(getMainLooper());
         handler.postDelayed(() -> {
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            finish();
         }, 3000);
 
     }
