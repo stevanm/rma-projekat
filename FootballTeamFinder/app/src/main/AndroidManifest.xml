@@ -19,6 +19,7 @@
 
         <activity
             android:name=".presentation.splash.SplashActivity"
+            android:launchMode="singleTop"
             android:theme="@style/FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +28,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.main.MainActivity" />
+        <activity
+            android:name=".presentation.main.MainActivity"
+            android:launchMode="singleTop" />
+
+
     </application>
 
 </manifest>

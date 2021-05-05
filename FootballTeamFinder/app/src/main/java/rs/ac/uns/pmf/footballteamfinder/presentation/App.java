@@ -25,7 +25,7 @@ public class App extends Application {
 
         //use cases
         Interactors interactors = new Interactors(
-                new GetLeaguesByCountryUseCase("Serbia", englishLeagueRepository)
+                new GetLeaguesByCountryUseCase("england", englishLeagueRepository)
         );
 
         appViewModelFactory = new AppViewModelFactory(this, interactors);

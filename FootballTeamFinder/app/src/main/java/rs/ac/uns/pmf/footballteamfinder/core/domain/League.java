@@ -28,10 +28,9 @@ public class League {
 
     @Override
     public String toString() {
-        return "League{" +
-                "name='" + name + '\'' +
-                ", logo='" + logo + '\'' +
+        return "League {" +
+                " name='" + name + '\'' +
                 ", type='" + type + '\'' +
-                '}';
+                " }";
     }
 }
