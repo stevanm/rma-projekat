@@ -14,14 +14,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import rs.ac.uns.pmf.footballteamfinder.core.data.LeagueRepository;
 import rs.ac.uns.pmf.footballteamfinder.core.domain.League;
-import rs.ac.uns.pmf.footballteamfinder.framework.networkmodel.LeagueMapper;
-import rs.ac.uns.pmf.footballteamfinder.framework.networkmodel.leaguesbycountry.LeagueApiNetworkEntity;
+import rs.ac.uns.pmf.footballteamfinder.core.mappers.LeagueMapper;
+import rs.ac.uns.pmf.footballteamfinder.framework.networkmodel.leagues.LeagueApiNetworkEntity;
 
 public class LeagueRepositoryImpl implements LeagueRepository {
 
     public static final String TAG = LeagueRepositoryImpl.class.getSimpleName();
 
-    private LeagueMapper leagueMapper;
+    private final LeagueMapper leagueMapper;
 
     private final MutableLiveData<List<League>> mLeagues = new MutableLiveData<>();
     public LiveData<List<League>> leagues = mLeagues;

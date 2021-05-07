@@ -1,4 +1,4 @@
-package rs.ac.uns.pmf.footballteamfinder.framework.networkmodel.leaguesbycountry;
+package rs.ac.uns.pmf.footballteamfinder.framework.networkmodel.leagues;
 
 import com.google.gson.annotations.SerializedName;
 

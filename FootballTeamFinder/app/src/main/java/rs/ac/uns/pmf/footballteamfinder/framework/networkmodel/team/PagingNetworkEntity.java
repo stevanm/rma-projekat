@@ -1,4 +1,4 @@
-package rs.ac.uns.pmf.footballteamfinder.framework.networkmodel.leaguesbycountry;
+package rs.ac.uns.pmf.footballteamfinder.framework.networkmodel.team;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -10,11 +10,11 @@ public class PagingNetworkEntity {
 	@SerializedName("total")
 	private int total;
 
-	public int getCurrent() {
+	public int getCurrent(){
 		return current;
 	}
 
-	public int getTotal() {
+	public int getTotal(){
 		return total;
 	}
 }

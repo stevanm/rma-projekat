@@ -7,8 +7,11 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
+import org.jetbrains.annotations.NotNull;
+
 import rs.ac.uns.pmf.footballteamfinder.R;
 import rs.ac.uns.pmf.footballteamfinder.core.domain.League;
+import rs.ac.uns.pmf.footballteamfinder.core.domain.Team;
 import rs.ac.uns.pmf.footballteamfinder.presentation.BaseActivity;
 
 public class MainActivity extends BaseActivity {
@@ -22,8 +25,8 @@ public class MainActivity extends BaseActivity {
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, LeagueFragment.newInstance())
-                    .commitNow();
+                    .add(R.id.container, LeagueFragment.newInstance())
+                    .commit();
         }
 
         //google ads
@@ -36,9 +39,15 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    public void onLeagueItemClick(League league) {
-        //TODO: for clicked league item show team details
-        Toast.makeText(this, league.toString(), Toast.LENGTH_SHORT).show();
+    public void onLeagueItemClick(@NotNull League league) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, TeamFragment.newInstance(league.getId()))
+                .addToBackStack(null)
+                .commit(); //commitNow() method can be used just with custom stack - see implementation
+    }
+
+    public void onTeamItemClick(@NotNull Team team) {
+        Toast.makeText(this, team.toString(), Toast.LENGTH_SHORT).show();
     }
 
 }

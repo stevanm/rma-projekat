@@ -1,13 +1,12 @@
-package rs.ac.uns.pmf.footballteamfinder.framework.networkmodel.leaguesbycountry;
-
-import com.google.gson.annotations.SerializedName;
+package rs.ac.uns.pmf.footballteamfinder.framework.networkmodel.team;
 
 import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
-public class LeagueApiNetworkEntity {
+public class TeamApiNetworkEntity {
 
 	@SerializedName("response")
-	private List<LeagueItemNetworkEntity> response;
+	private List<TeamItemNetworkEntity> response;
 
 	@SerializedName("get")
 	private String get;
@@ -24,27 +23,27 @@ public class LeagueApiNetworkEntity {
 	@SerializedName("errors")
 	private List<Object> errors;
 
-	public List<LeagueItemNetworkEntity> getResponse() {
+	public List<TeamItemNetworkEntity> getResponse(){
 		return response;
 	}
 
-	public String getGet() {
+	public String getGet(){
 		return get;
 	}
 
-	public PagingNetworkEntity getPagingNetworkEntity() {
+	public PagingNetworkEntity getPagingNetworkEntity(){
 		return pagingNetworkEntity;
 	}
 
-	public ParametersNetworkEntity getParametersNetworkEntity() {
+	public ParametersNetworkEntity getParametersNetworkEntity(){
 		return parametersNetworkEntity;
 	}
 
-	public int getResults() {
+	public int getResults(){
 		return results;
 	}
 
-	public List<Object> getErrors() {
+	public List<Object> getErrors(){
 		return errors;
 	}
 }

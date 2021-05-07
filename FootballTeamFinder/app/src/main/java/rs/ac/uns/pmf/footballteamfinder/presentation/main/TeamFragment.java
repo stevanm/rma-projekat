@@ -17,17 +17,22 @@ import rs.ac.uns.pmf.footballteamfinder.framework.LeagueViewModel;
 import rs.ac.uns.pmf.footballteamfinder.presentation.App;
 import rs.ac.uns.pmf.footballteamfinder.presentation.BaseFragment;
 
-public class LeagueFragment extends BaseFragment {
+
+public class TeamFragment extends BaseFragment {
 
     private LeagueViewModel mLeagueViewModel;
 
     private RecyclerView recyclerView;
-    private LeagueAdapter leagueAdapter;
+    private TeamAdapter teamAdapter;
 
     private Context context;
 
-    public static LeagueFragment newInstance() {
-        return new LeagueFragment();
+    public static TeamFragment newInstance(int leagueId) {
+        Bundle args = new Bundle();
+        args.putInt("leagueId", leagueId);
+        TeamFragment fragment = new TeamFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
@@ -36,21 +41,31 @@ public class LeagueFragment extends BaseFragment {
         this.context = context;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.league_fragment, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_team_statistics, container, false);
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = view.findViewById(R.id.leaguesRecyclerView);
+        recyclerView = view.findViewById(R.id.teamRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        leagueAdapter = new LeagueAdapter(context);
-        recyclerView.setAdapter(leagueAdapter);
+        teamAdapter = new TeamAdapter(context);
+        recyclerView.setAdapter(teamAdapter);
+
+
+        Integer season = 2019;
+        Integer leagueId = null;
+        if (getArguments() != null) {
+            leagueId = getArguments().getInt("leagueId");
+        }
+
+        mLeagueViewModel = new ViewModelProvider(this, ((App) getActivity().getApplication()).getAppViewModelFactory()).get(LeagueViewModel.class);
+
+        mLeagueViewModel.executeGetTeamByCountryNameAndLeague(season, leagueId);
 
     }
 
@@ -58,15 +73,11 @@ public class LeagueFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mLeagueViewModel = new ViewModelProvider(this, ((App) getActivity().getApplication()).getAppViewModelFactory()).get(LeagueViewModel.class);
-
-        mLeagueViewModel.executeGetLeaguesByCountry();
-        mLeagueViewModel.leagueData.observe(this,
-                leagueList ->
+        mLeagueViewModel.teamsData.observe(this,
+                teamList ->
                 {
-                    leagueAdapter.setList(leagueList);
+                    teamAdapter.setList(teamList);
                 });
 
     }
-
 }

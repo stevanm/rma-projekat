@@ -16,15 +16,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rs.ac.uns.pmf.footballteamfinder.R;
-import rs.ac.uns.pmf.footballteamfinder.core.domain.League;
+import rs.ac.uns.pmf.footballteamfinder.core.domain.Team;
 
-public class LeagueAdapter extends RecyclerView.Adapter<LeagueAdapter.ViewHolder> {
+public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
 
     private Context context;
 
-    List<League> leagues = new ArrayList<>();
+    List<Team> teams = new ArrayList<>();
 
-    public LeagueAdapter(Context context) {
+    public TeamAdapter(Context context) {
         this.context = context;
     }
 
@@ -32,60 +32,70 @@ public class LeagueAdapter extends RecyclerView.Adapter<LeagueAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.league_row_item, parent, false);
+                .inflate(R.layout.team_row_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        League league = leagues.get(position);
+        Team team = teams.get(position);
 
-        holder.getLeagueNameTextView().setText(league.getName());
-        holder.getLeagueCountryTextView().setText(league.getCountry());
+        holder.getNameTextView().setText(team.getName());
+        holder.getCityTextView().setText(team.getCity());
+        holder.getFoundedTextView().setText(String.valueOf(team.getFounded()));
         Picasso.get()
-                .load(league.getLogo())
+                .load(team.getLogo())
                 .resize(60, 60)
                 .into(holder.getImageView());
 
         holder.itemView.setOnClickListener(v ->
-                ((MainActivity) context).onLeagueItemClick(leagues.get(position))
+                {
+                    ((MainActivity) context).onTeamItemClick(teams.get(position));
+                }
         );
     }
 
     @Override
     public int getItemCount() {
-        return leagues.size();
+        return teams.size();
     }
 
 
-    public void setList(List<League> leagueList) {
-        this.leagues = leagueList;
+    public void setList(List<Team> teamList) {
+        this.teams = teamList;
         notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imageView;
-        private TextView leagueName;
-        private TextView leagueCountry;
+        private TextView teamName;
+        private TextView teamCity;
+        private TextView teamFounded;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             imageView = itemView.findViewById(R.id.logo);
-            leagueName = itemView.findViewById(R.id.leagueName);
-            leagueCountry = itemView.findViewById(R.id.leagueCountry);
+            teamName = itemView.findViewById(R.id.teamName);
+            teamCity = itemView.findViewById(R.id.teamCity);
+            teamFounded = itemView.findViewById(R.id.teamFounded);
         }
 
         public ImageView getImageView() {
             return imageView;
         }
 
-        public TextView getLeagueNameTextView() {
-            return leagueName;
+        public TextView getNameTextView() {
+            return teamName;
         }
 
-        public TextView getLeagueCountryTextView() {
-            return leagueCountry;
+        public TextView getCityTextView() {
+            return teamCity;
+        }
+
+        public TextView getFoundedTextView() {
+            return teamFounded;
         }
 
     }
