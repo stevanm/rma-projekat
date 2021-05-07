@@ -40,8 +40,8 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Team team = teams.get(position);
 
-        holder.getNameTextView().setText(team.getName());
-        holder.getCityTextView().setText(team.getCity());
+        holder.getNameTextView().setText(team.getName() == null || team.getName().isEmpty() ? "No data" : team.getName());
+        holder.getCityTextView().setText(team.getName() == null || team.getCity().isEmpty() ? "No data" : team.getCity());
         holder.getFoundedTextView().setText(String.valueOf(team.getFounded()));
         Picasso.get()
                 .load(team.getLogo())
@@ -57,7 +57,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return teams.size();
+        return teams != null ? teams.size() : 0;
     }
 
 

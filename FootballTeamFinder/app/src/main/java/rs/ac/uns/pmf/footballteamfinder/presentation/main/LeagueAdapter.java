@@ -40,8 +40,8 @@ public class LeagueAdapter extends RecyclerView.Adapter<LeagueAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         League league = leagues.get(position);
 
-        holder.getLeagueNameTextView().setText(league.getName());
-        holder.getLeagueCountryTextView().setText(league.getCountry());
+        holder.getLeagueNameTextView().setText(league.getName() == null || league.getName().isEmpty() ? "No data" : league.getName());
+        holder.getLeagueCountryTextView().setText(league.getCountry() == null || league.getCountry().isEmpty() ? "No data" : league.getCountry());
         Picasso.get()
                 .load(league.getLogo())
                 .resize(60, 60)
