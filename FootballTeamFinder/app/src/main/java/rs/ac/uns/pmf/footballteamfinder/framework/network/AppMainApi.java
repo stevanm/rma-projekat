@@ -7,7 +7,7 @@ import retrofit2.http.Query;
 import rs.ac.uns.pmf.footballteamfinder.framework.networkmodel.leagues.LeagueApiNetworkEntity;
 import rs.ac.uns.pmf.footballteamfinder.framework.networkmodel.team.TeamApiNetworkEntity;
 
-public interface AppRemoteApi {
+public interface AppMainApi {
 
     //get the list of available leagues and cups
     @Headers({

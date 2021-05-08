@@ -7,8 +7,7 @@ public class GetLeaguesByCountryUseCase extends UseCase {
     private LeagueRepository leagueRepository;
     private String country;
 
-    public GetLeaguesByCountryUseCase(String country, LeagueRepository leagueRepository) {
-        this.country = country;
+    public GetLeaguesByCountryUseCase(LeagueRepository leagueRepository) {
         this.leagueRepository = leagueRepository;
     }
 
@@ -20,6 +19,9 @@ public class GetLeaguesByCountryUseCase extends UseCase {
         return leagueRepository;
     }
 
+    public void setCountry(String country) {
+        this.country = country;
+    }
 }
 
 

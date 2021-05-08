@@ -2,5 +2,7 @@
 <resources>
 
     <dimen name="size_80sp">80sp</dimen>
+    <dimen name="size_50dp">50dp</dimen>
+    <dimen name="size_10dp">10dp</dimen>
 
 </resources>

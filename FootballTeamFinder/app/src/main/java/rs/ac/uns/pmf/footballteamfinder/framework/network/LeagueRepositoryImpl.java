@@ -33,7 +33,7 @@ public class LeagueRepositoryImpl implements LeagueRepository {
 
     @Override
     public void getLeaguesByCountryName(String country) {
-        Call<LeagueApiNetworkEntity> call = NetworkService.getNetworkService().create(AppRemoteApi.class).getLeaguesByCountryName(country);
+        Call<LeagueApiNetworkEntity> call = AppMainNetworkService.getAppMainNetworkService().create(AppMainApi.class).getLeaguesByCountryName(country);
         call.enqueue(new Callback<LeagueApiNetworkEntity>() {
             @Override
             public void onResponse(@NotNull Call<LeagueApiNetworkEntity> call, @NotNull Response<LeagueApiNetworkEntity> response) {

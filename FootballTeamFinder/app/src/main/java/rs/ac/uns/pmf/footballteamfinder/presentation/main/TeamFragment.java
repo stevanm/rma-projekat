@@ -43,7 +43,7 @@ public class TeamFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_team_statistics, container, false);
+        return inflater.inflate(R.layout.fragment_team, container, false);
     }
 
 
@@ -63,7 +63,7 @@ public class TeamFragment extends BaseFragment {
             leagueId = getArguments().getInt("leagueId");
         }
 
-        mLeagueViewModel = new ViewModelProvider(this, ((App) getActivity().getApplication()).getAppViewModelFactory()).get(LeagueViewModel.class);
+        mLeagueViewModel = new ViewModelProvider(requireActivity(), ((App) getActivity().getApplication()).getAppViewModelFactory()).get(LeagueViewModel.class);
 
         mLeagueViewModel.executeGetTeamByCountryNameAndLeague(season, leagueId);
 
@@ -73,7 +73,7 @@ public class TeamFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mLeagueViewModel.teamsData.observe(this,
+        mLeagueViewModel.teamsData.observe(requireActivity(),
                 teamList ->
                 {
                     teamAdapter.setList(teamList);

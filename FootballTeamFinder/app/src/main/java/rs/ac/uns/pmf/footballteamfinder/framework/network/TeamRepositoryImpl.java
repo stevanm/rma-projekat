@@ -31,7 +31,7 @@ public class TeamRepositoryImpl implements TeamRepository {
 
     @Override
     public void getTeamsBySeasonAndLeagueId(Integer season, Integer leagueId) {
-        Call<TeamApiNetworkEntity> call = NetworkService.getNetworkService().create(AppRemoteApi.class).getTeamsBySeasonAndLeagueId(season, leagueId);
+        Call<TeamApiNetworkEntity> call = AppMainNetworkService.getAppMainNetworkService().create(AppMainApi.class).getTeamsBySeasonAndLeagueId(season, leagueId);
         call.enqueue(new Callback<TeamApiNetworkEntity>() {
             @Override
             public void onResponse(Call<TeamApiNetworkEntity> call, Response<TeamApiNetworkEntity> response) {

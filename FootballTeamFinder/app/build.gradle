@@ -27,6 +27,18 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    productFlavors {
+
+        flavorDimensions 'default'
+
+        prod {
+            applicationId "rs.ac.uns.pmf.rma.ftf"
+            buildConfigField "String", "GEOCODING_SERVER_URL", "\"https://nominatim.openstreetmap.org/\""
+//            buildConfigField "String", "WMS_TILE_BASE_URL", "\"https://tile.openstreetmap.org/\""
+            buildConfigField "String", "WMS_TILE_BASE_URL", "\"http://ue.cache.osmsrbija.iz.rs/cir/\""
+        }
+    }
+
 }
 
 dependencies {
@@ -43,7 +55,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //material design support
-    implementation 'com.google.android.material:material:1.4.0-alpha02'
+    implementation 'com.google.android.material:material:1.4.0-beta01'
 
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -59,5 +71,10 @@ dependencies {
     //google ads
     implementation 'com.google.android.gms:play-services-ads:20.1.0'
 
+    //OSM Map library
+    implementation 'org.osmdroid:osmdroid-android:6.1.6'
+
+    //permission lib
+    implementation 'com.karumi:dexter:6.2.2'
 
 }

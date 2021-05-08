@@ -26,8 +26,14 @@ public class LeagueFragment extends BaseFragment {
 
     private Context context;
 
-    public static LeagueFragment newInstance() {
-        return new LeagueFragment();
+    private String mCountry;
+
+    public static LeagueFragment newInstance(String country) {
+        Bundle args = new Bundle();
+        args.putString("country", country);
+        LeagueFragment fragment = new LeagueFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
@@ -51,6 +57,11 @@ public class LeagueFragment extends BaseFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         leagueAdapter = new LeagueAdapter(context);
         recyclerView.setAdapter(leagueAdapter);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
     }
 
@@ -58,10 +69,14 @@ public class LeagueFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mLeagueViewModel = new ViewModelProvider(this, ((App) getActivity().getApplication()).getAppViewModelFactory()).get(LeagueViewModel.class);
+        if (null != getArguments() && !getArguments().isEmpty()) {
+            mCountry = getArguments().getString("country");
+        }
 
-        mLeagueViewModel.executeGetLeaguesByCountry();
-        mLeagueViewModel.leagueData.observe(this,
+        mLeagueViewModel = new ViewModelProvider(requireActivity(), ((App) getActivity().getApplication()).getAppViewModelFactory()).get(LeagueViewModel.class);
+
+        mLeagueViewModel.executeGetLeaguesByCountry(mCountry);
+        mLeagueViewModel.leagueData.observe(requireActivity(),
                 leagueList ->
                 {
                     leagueAdapter.setList(leagueList);

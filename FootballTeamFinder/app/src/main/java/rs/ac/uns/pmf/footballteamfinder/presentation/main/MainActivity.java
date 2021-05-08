@@ -25,7 +25,8 @@ public class MainActivity extends BaseActivity {
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, LeagueFragment.newInstance())
+                    .add(R.id.container, MapFragment.newInstance())
+//                    .addToBackStack(null)
                     .commit();
         }
 
@@ -47,7 +48,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void onTeamItemClick(@NotNull Team team) {
-        Toast.makeText(this, team.toString(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, team.toString(), Toast.LENGTH_SHORT).show();
     }
 
 }

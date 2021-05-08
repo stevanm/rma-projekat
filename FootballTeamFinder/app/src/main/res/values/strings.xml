@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Football Team Finder</string>
     <string name="football_team_finder">Football Team Finder</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="permission_not_granted">Permissions aren\'t granted!</string>
+    <string name="all_permission_granted">All permissions are granted!</string>
+    <string name="ok">Ok</string>
+    <string name="select_location">Select location</string>
+    <string name="set_location_of_issue_on_map">Select country you are interested in!</string>
 </resources>

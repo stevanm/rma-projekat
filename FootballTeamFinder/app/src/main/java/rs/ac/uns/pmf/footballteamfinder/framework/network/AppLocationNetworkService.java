@@ -5,17 +5,17 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class NetworkService {
+public class AppLocationNetworkService {
 
     private static Retrofit instance;
 
-    private NetworkService() {
+    private AppLocationNetworkService() {
     }
 
-    public static Retrofit getNetworkService() {
+    public static Retrofit getAppLocationNetworkService() {
         if (instance == null) {
             instance = new Retrofit.Builder()
-                    .baseUrl("https://api-football-v1.p.rapidapi.com/")
+                    .baseUrl("https://nominatim.openstreetmap.org/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(
                             new OkHttpClient.Builder()
